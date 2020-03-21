@@ -1,0 +1,82 @@
+
+**** TOMCAT *****
+context.xml:
+<ResourceLink global="jdbc/econtratoKyCDS" name="jdbc/econtratoKyCDS" type="javax.sql.DataSource"/>
+
+server.xml:
+<Resource driverClassName="oracle.jdbc.OracleDriver" 
+	maxIdle="20" 
+	maxTotal="50" 
+	maxWaitMillis="5000" 
+	name="jdbc/econtratoKyCDS" 
+	password="orange" 
+	type="javax.sql.DataSource" 
+	url="jdbc:oracle:thin:@10.228.167.186:1521:orcl" 
+	username="orange"/>
+	
+	
+****** war **********	
+
+properties:
+entorno.jndiName=java:comp/env/jdbc/econtratoKyCDS
+
+
+web.xml:
+<resource-ref>
+ <description>Oracle Datasource example</description>
+ <res-ref-name>jdbc/econtratoKyCDS</res-ref-name>
+ <res-type>javax.sql.DataSource</res-type>
+ <res-auth>Container</res-auth>
+</resource-ref>
+
+
+
+***** SPRING *******
+
+Spring applicationContext:
+
+
+    <bean id="myDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+	    <property name="resourceRef"><value>false</value></property>
+	    <property name="jndiName"><value>${entorno.jndiName}</value></property>
+	</bean>  
+
+	<bean id="mySessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource" />
+		<property name="hibernateProperties" ref="hibernatePropertiesDefault"></property>
+	    <property name="packagesToScan">  
+	        <list>  
+	            <value>es.orange.econtrato.dao.entities</value>  
+	        </list>  
+	    </property>  
+	</bean>
+
+
+	<bean id="hibernatePropertiesDefault" class="java.util.Properties"/>
+
+	<bean id="hibernateProperties.load" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+	  <property name="targetObject"><ref local="hibernatePropertiesDefault"/></property>
+	  <property name="targetMethod"><value>putAll</value></property>
+	  <property name="arguments">
+	    <props>
+          <prop key="hibernate.show_sql">true</prop>
+          <prop key="hibernate.format_sql">true</prop>
+          <prop key="use_sql_comments">true</prop>
+          <prop key="hibernate.default_schema">${entorno.default_schema}</prop>
+	    </props>
+	  </property>
+	</bean>
+
+
+
+	<bean id="txManager"
+	    class="org.springframework.orm.hibernate4.HibernateTransactionManager"
+        lazy-init="true">
+	    <property name="SessionFactory" ref="mySessionFactory" />
+	</bean>     
+	
+	<tx:annotation-driven transaction-manager="txManager" />
+	
+
+	
+	

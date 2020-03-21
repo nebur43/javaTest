@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://IdCloud.iCarVision/WS/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://IdCloud.iCarVision/WS/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">icarSAAS Web Service Public - Version 1.0.3</wsdl:documentation>
+  <wsdl:types>
+    <s:schema targetNamespace="http://IdCloud.iCarVision/WS/">
+      <s:include schemaLocation="https://demoidcloud.icarvision.com:50061/iCarSAAS.WsPublic/WsDocument.asmx?schema=schema1" />
+      <s:import schemaLocation="https://demoidcloud.icarvision.com:50061/iCarSAAS.WsPublic/WsDocument.asmx?schema=DsDocumentCheckOut" namespace="http://tempuri.org/DsDocumentCheckOut.xsd" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AnalyzeDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:AnalyzeDocument" />
+  </wsdl:message>
+  <wsdl:message name="AnalyzeDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:AnalyzeDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="AnalyzeDocumentV2SoapIn">
+    <wsdl:part name="parameters" element="tns:AnalyzeDocumentV2" />
+  </wsdl:message>
+  <wsdl:message name="AnalyzeDocumentV2SoapOut">
+    <wsdl:part name="parameters" element="tns:AnalyzeDocumentV2Response" />
+  </wsdl:message>
+  <wsdl:message name="AnalyzeDocumentV2ExSoapIn">
+    <wsdl:part name="parameters" element="tns:AnalyzeDocumentV2Ex" />
+  </wsdl:message>
+  <wsdl:message name="AnalyzeDocumentV2ExSoapOut">
+    <wsdl:part name="parameters" element="tns:AnalyzeDocumentV2ExResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WsDocumentSoap">
+    <wsdl:operation name="AnalyzeDocument">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method that analyzes and verifies a document</wsdl:documentation>
+      <wsdl:input message="tns:AnalyzeDocumentSoapIn" />
+      <wsdl:output message="tns:AnalyzeDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnalyzeDocumentV2">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method that analyzes and verifies a document V2</wsdl:documentation>
+      <wsdl:input message="tns:AnalyzeDocumentV2SoapIn" />
+      <wsdl:output message="tns:AnalyzeDocumentV2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnalyzeDocumentV2Ex">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Method that analyzes and verifies a document V2 IDBoxInfo</wsdl:documentation>
+      <wsdl:input message="tns:AnalyzeDocumentV2ExSoapIn" />
+      <wsdl:output message="tns:AnalyzeDocumentV2ExSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsDocumentSoap" type="tns:WsDocumentSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AnalyzeDocument">
+      <soap:operation soapAction="http://IdCloud.iCarVision/WS/AnalyzeDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnalyzeDocumentV2">
+      <soap:operation soapAction="http://IdCloud.iCarVision/WS/AnalyzeDocumentV2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnalyzeDocumentV2Ex">
+      <soap:operation soapAction="http://IdCloud.iCarVision/WS/AnalyzeDocumentV2Ex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WsDocumentSoap12" type="tns:WsDocumentSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AnalyzeDocument">
+      <soap12:operation soapAction="http://IdCloud.iCarVision/WS/AnalyzeDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnalyzeDocumentV2">
+      <soap12:operation soapAction="http://IdCloud.iCarVision/WS/AnalyzeDocumentV2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnalyzeDocumentV2Ex">
+      <soap12:operation soapAction="http://IdCloud.iCarVision/WS/AnalyzeDocumentV2Ex" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsDocument">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">icarSAAS Web Service Public - Version 1.0.3</wsdl:documentation>
+    <wsdl:port name="WsDocumentSoap" binding="tns:WsDocumentSoap">
+      <soap:address location="https://demoidcloud.icarvision.com:50061/iCarSAAS.WsPublic/WsDocument.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WsDocumentSoap12" binding="tns:WsDocumentSoap12">
+      <soap12:address location="https://demoidcloud.icarvision.com:50061/iCarSAAS.WsPublic/WsDocument.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
