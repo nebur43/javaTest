@@ -46,7 +46,7 @@ public class ExecutorServiceAsyncPool implements Runnable{
 		executorService.submit(new ExecutorServiceAsyncPool("cadena  9 FIIIIIN"));
 
 //		executorService.shutdown(); // previously submittedtasks are executed, but no new tasks will be accepted. 
-		List<Runnable>  tareas = executorService.shutdownNow(); // desecha las tareas en cola
+//		List<Runnable>  tareas = executorService.shutdownNow(); // desecha las tareas en cola
 //		for (Runnable r:tareas) {
 //			System.out.println("Tareas no ejecutadas:" + r);
 //		}
