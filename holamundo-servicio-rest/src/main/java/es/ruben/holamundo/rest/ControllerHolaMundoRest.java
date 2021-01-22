@@ -3,6 +3,7 @@ package es.ruben.holamundo.rest;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,17 @@ import es.ruben.holamundo.rest.dao.ResponseHolaMundo;
 
 @RestController
 public class ControllerHolaMundoRest {
+	
+	/**
+	 * llamada a http://localhost:8080/holamundo-servicio-rest/version
+	 * 
+	 * @return
+	 */
+	@GetMapping (value = "/version")
+	public String version() {
+		System.out.println("entrando en /version");
+		return "1.0";
+	}
 	
 	// http://localhost:8080/holamundo-servicio-rest/getTrabajadores?nombre=superman
 	@RequestMapping(value = "/getTrabajadores", method = RequestMethod.GET)
