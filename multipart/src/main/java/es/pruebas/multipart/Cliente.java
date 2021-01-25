@@ -3,6 +3,7 @@ package es.pruebas.multipart;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Date;
 
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.FileSystemResource;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -23,6 +25,7 @@ public class Cliente {
 	 */
 	public void enviarFichero() {
 		
+		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 		
@@ -34,11 +37,20 @@ public class Cliente {
 
 		String serverUrl = "http://localhost:8080/multipart/upload";
 
-		RestTemplate restTemplate = new RestTemplate();
+		RestTemplate restTemplate = new RestTemplate(getRequestFactory());
 		ResponseEntity<String> response = restTemplate.postForEntity(serverUrl, requestEntity, String.class);
 		
 		System.out.println("Respuesta: " + response.getBody());
 		
+		
+	}
+	
+	private HttpComponentsClientHttpRequestFactory  getRequestFactory() {
+		HttpComponentsClientHttpRequestFactory rf = new HttpComponentsClientHttpRequestFactory();
+//		rf.setConnectionRequestTimeout(5000);
+//		rf.setConnectTimeout(5000);
+		rf.setReadTimeout(5000);
+		return rf;
 	}
 	
 	private RequestBean getRequest() {
@@ -64,10 +76,21 @@ public class Cliente {
 		};
 	}
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		
 		Cliente cliente = new Cliente();
-		cliente.enviarFichero();
+		
+		Date  d1 = new Date();
+		System.out.println("init_Time:" + d1);
+		try {
+			cliente.enviarFichero();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		Date  d2 = new Date();
+		System.out.println("fin_Time:" + d2);
+		System.out.println("total time:" + (d2.getTime() - d1.getTime()) + " ms" );
 		
 		
 	}

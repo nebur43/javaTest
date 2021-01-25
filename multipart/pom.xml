@@ -45,6 +45,13 @@
         <version>2.5</version>
     </dependency>
 
+	<!-- para la factoria del timeout -->
+	<dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.6</version>
+    </dependency>
+
 	<dependency>
 		<groupId>javax.servlet</groupId>
 		<artifactId>javax.servlet-api</artifactId>
