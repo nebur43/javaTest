@@ -15,8 +15,8 @@ public class PaginaPrincipal {
 	
 	private static int count = 0;
 	
-	private String saludo = "Hola majeteeee!  :"+count;
-	private String nombre = "Rubén";
+	private String saludo = "Mostrando PaginaPrincipal con servida con spring session scope :"+count;
+	private String nombre = "Rubï¿½n";
 	
 	
 	public PaginaPrincipal() {

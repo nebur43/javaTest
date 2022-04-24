@@ -46,7 +46,7 @@ public class EjemploJpaRelacionesApplication implements CommandLineRunner {
 		productoRepository.save(producto3);
 
 		listCategories();
-
+/*
 		Categoria categoriaFinded = categoriaRepository.findByRef("HAN");
 
 		categoriaFinded.getProductos().add(new Producto("Llanta alumninio 17\"", 99.99, categoriaFinded));
@@ -92,6 +92,7 @@ public class EjemploJpaRelacionesApplication implements CommandLineRunner {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
 	}
 
 	private void listCategories() {

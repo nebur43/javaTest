@@ -20,8 +20,8 @@ public class PaginaPrincipal2 {
 	@ManagedProperty(value = "#{paginaPrincialService}")
 	private PaginaPrincialService paginaPrincialService;
 	
-	private String saludo = "Hola majeteeee!  ";
-	private String nombre = "Rubén";
+	private String saludo = "Mostrando PaginaPrincipal con servida con jfaces @ManagedBean y@SessionScoped ";
+	private String nombre = "Rubï¿½n";
 	
 	public PaginaPrincipal2() {
 		count++;
