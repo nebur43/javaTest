@@ -1,5 +1,6 @@
 package pruebas.java_concurrency;
 
+import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -14,7 +15,7 @@ public class ExecutorScheduledService implements Runnable{
 	
 	@Override
 	public void run() {
-		System.out.println( txt);
+		System.out.println( new Date() + " " +txt);
 		
 	}
 	
@@ -25,10 +26,10 @@ public class ExecutorScheduledService implements Runnable{
 		scheduledExecutorService.schedule(new ExecutorScheduledService("tarea 2"), 5,TimeUnit.SECONDS);
 		scheduledExecutorService.schedule(new ExecutorScheduledService("tarea 3"), 2,TimeUnit.SECONDS);
 		scheduledExecutorService.schedule(new ExecutorScheduledService("tarea 4"), 7,TimeUnit.SECONDS);
-		System.out.println("INICIO");
+		System.out.println(new Date() + " " +"INICIO");
 		scheduledExecutorService.shutdown();
 		scheduledExecutorService.awaitTermination(60, TimeUnit.SECONDS);
-		System.out.println("FIN");
+		System.out.println(new Date() + " " +"FIN");
 		
 		/*Ejecuta tareas cada 4 1 y 2 segundos
 		 * */
@@ -38,13 +39,13 @@ public class ExecutorScheduledService implements Runnable{
 		scheduledExecutorService2.scheduleAtFixedRate(new ExecutorScheduledService("tarea 30"), 3, 2, TimeUnit.SECONDS);
 		
 		scheduledExecutorService2.schedule(()-> {
-			System.out.println("FINALIZAMOS DESPUES DE 15 SEGUNDOS ...");
+			System.out.println(new Date() + " " +"FINALIZAMOS DESPUES DE 15 SEGUNDOS ...");
 			scheduledExecutorService2.shutdown();
 			return true;
 		},15, TimeUnit.SECONDS);
 		
 		scheduledExecutorService2.awaitTermination(40, TimeUnit.SECONDS);
-		System.out.println("SEGUNDO FIN");
+		System.out.println(new Date() + " " +"SEGUNDO FIN");
 	}
 
 	
