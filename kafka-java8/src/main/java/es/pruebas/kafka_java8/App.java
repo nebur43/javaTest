@@ -34,6 +34,7 @@ public class App
 		                String.valueOf(index), // key
 		                "New -- RECORD " + index+ " partition:" + partition//value
 		                );
+                System.out.println("enviando record");
                 RecordMetadata metadata = producer.send(record).get();
                 System.out.println("Record sent with key " + index + " to partition " + metadata.partition() + " with offset " + metadata.offset());
              }
@@ -52,6 +53,7 @@ public class App
           
         	// 1000 is the time in milliseconds consumer will wait if no record is found at broker.
             if (consumerRecords.count() == 0) {
+            	System.out.println("no encontramos mensajes en cola "+ topic);
                 noMessageFound++;
                 if (noMessageFound > 10) // esperamos 10 segundos antes de terminar
                   // If no message found count is reached to threshold exit loop.  
@@ -82,7 +84,8 @@ public class App
 	
     /**
      * listar colas: kafka-topics.sh --list --zookeeper zookeeper:2181 .
-     * 
+     * descripcion cola: kafka-topics.sh --describe --topic cola2 --zookeeper zookeeper:2181
+     * crear cola: ./kafka-topics.sh --zookeeper zookeeper:2181 --topic cola1 --create --partitions 3 --replication-factor 1
      * ver mensajes en cola: kafka-console-consumer.sh --topic cola2 --bootstrap-server localhost:9092 --from-beginning
      * 
      * @param args
@@ -92,9 +95,8 @@ public class App
     public static void main( String[] args ) throws Exception
     {
         System.out.println( "Hello World!" );
-        runProducer("localhost:9092",TOPIC_NAME_2,0);
-//        runProducer(TOPIC_NAME_2,1);
-//        runConsumer(TOPIC_NAME_2,1);
+//        runProducer("localhost:9092", TOPIC_NAME_1, 0);
+        runConsumer(TOPIC_NAME_1,0);
         System.out.println( "FIN" );
     }
 }
