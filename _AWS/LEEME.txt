@@ -1,0 +1,11 @@
+
+* HOLAMUNDO LLAMADAS LAMBDA Spain *
+
+python 3.8: 						cold start: 398ms - warn start: 108/63/41/67
+nodejs18 typescript: 				cold start: 573ms - warn start: 93/131/231/200
+java 11:							cold start: 762ms - warn start: 72/78/88/66
+
+java 11 snapstart (frankfurt):		cold start: 1029ms - warn start: 111/109/153/139
+java 11 (frankfurt):				cold start: 830ms - warn start: 124/137/104/139
+
+
