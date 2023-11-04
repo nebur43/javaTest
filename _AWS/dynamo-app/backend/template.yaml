@@ -17,6 +17,15 @@ Parameters:
     Type: String
 
 Resources:
+  apiGatewayApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: apiGatewayComments
+      StageName: Prod
+      Cors:
+        AllowMethods: "'PUT, GET, OPTIONS'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'*'"
   createComment:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
@@ -38,6 +47,7 @@ Resources:
           Properties:
             Path: /comment
             Method: put
+            RestApiId: !Ref apiGatewayApi
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref threadTable
@@ -62,6 +72,7 @@ Resources:
           Properties:
             Path: /comment/{id}
             Method: get     
+            RestApiId: !Ref apiGatewayApi
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref threadTable
@@ -87,6 +98,7 @@ Resources:
           Properties:
             Path: /foro
             Method: put
+            RestApiId: !Ref apiGatewayApi
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref foroTable
@@ -111,11 +123,13 @@ Resources:
           Properties:
             Path: /foro/{id}
             Method: get
+            RestApiId: !Ref apiGatewayApi
         apiGet:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /foro
             Method: get
+            RestApiId: !Ref apiGatewayApi
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref foroTable            
@@ -135,8 +149,8 @@ Outputs:
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   CommentAppApi:
     Description: "API Gateway endpoint URL for Prod stage for Comment World function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/comment"
+    Value: !Sub "https://${apiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/comment"
   ForoAppApi:
     Description: "API Gateway endpoint URL for Prod stage for Comment World function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/foro"
+    Value: !Sub "https://${apiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/foro"
 

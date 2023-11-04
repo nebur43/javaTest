@@ -53,6 +53,9 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
 	        Map<String, String> headers = new HashMap<>();
 	        headers.put("Content-Type", "application/json");
 	        headers.put("X-Custom-Header", "application/json");
+	        headers.put("Access-Control-Allow-Headers", "Content-Type");
+	    	headers.put("Access-Control-Allow-Origin", "*");
+	    	headers.put("Access-Control-Allow-Methods", "PUT");
 			
 	        return response.withBody("{\"id\": \""+comment.getDateComentario()+"\"}")
 	                .withHeaders(headers)
