@@ -1,7 +1,6 @@
 package com.nebur.comment;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nebur.comment.bean.Foro;
 
-import software.amazon.awssdk.auth.credentials.AnonymousCredentialsProvider;
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.core.SdkSystemSetting;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
@@ -53,7 +51,6 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
     		logger.log("Listando Stage foros...");
     		List<Foro> foros = getForos();
     		logger.log("recuperado " + foros.size()+ " foros");
-    		foros.forEach(f -> f.setUsuario("@"+f.getUsuario()));
     		respuesta = foros;
     	} else {
     		String id = input.getPathParameters().get("id");
@@ -91,7 +88,9 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
                 .table("Foro", TableSchema.fromBean(Foro.class));
     	Long idForo = Long.valueOf(id);
     	Key key = Key.builder().partitionValue(1).sortValue(idForo).build();
-    	return mappedTable.getItem(key);
+    	Foro foro = mappedTable.getItem(key);
+    	foro.setUsuario("@"+foro.getUsuario());
+    	return foro;
 	}
 
 	private List<Foro> getForos() {
@@ -100,6 +99,7 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
     	DynamoDbTable<Foro> mappedTable = enhancedClient
                 .table("Foro", TableSchema.fromBean(Foro.class));
     	mappedTable.scan().forEach( x -> foros.addAll(x.items()));
+    	foros.forEach(f -> f.setUsuario("@"+f.getUsuario()));
     	return foros;
     }
 }

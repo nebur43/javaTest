@@ -51,7 +51,6 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
     	logger.log("recuperando Stage comentarios de foro: " + id);
     	
     	List<Comment> comments = getComments(idForo);
-    	comments.forEach(f -> f.setUsuario("@"+f.getUsuario()));
     	logger.log("comentarios recuperados: " + comments.size());
     	String body = null;
     	try {
@@ -87,6 +86,7 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
     	        .keyEqualTo(key);
     	
     	mappedTable.query(queryConditional).forEach( x -> comments.addAll(x.items()));
+    	comments.forEach(f -> f.setUsuario("@"+f.getUsuario()));
     	return comments;
     }
 }

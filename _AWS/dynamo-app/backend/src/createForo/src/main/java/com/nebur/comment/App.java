@@ -84,8 +84,15 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
                 .table("Foro", TableSchema.fromBean(Foro.class));
     	foro.setId(1);
         foro.setDateForo(System.currentTimeMillis());
+        foro.setUsuario(removeArroba(foro.getUsuario()));
         mappedTable.putItem(foro);
 
     }
 
+    private String removeArroba(String s) {
+        if (s!=null && s.startsWith("@")) {
+        	return removeArroba(s.substring(1, s.length()));
+        }
+        return s;
+    }
 }

@@ -75,10 +75,18 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
     	
     	String commentId = UUID.randomUUID().toString();
         comment.setDateComentario(System.currentTimeMillis());
+        comment.setUsuario(removeArroba(comment.getUsuario()));
         mappedTable.putItem(comment);
 
         return commentId;
 
     }
-
+    
+    private String removeArroba(String s) {
+        if (s!=null && s.startsWith("@")) {
+        	return removeArroba(s.substring(1, s.length()));
+        }
+        return s;
+    }
+    
 }
