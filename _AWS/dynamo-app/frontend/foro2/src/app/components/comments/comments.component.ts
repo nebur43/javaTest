@@ -15,6 +15,7 @@ export class CommentsComponent {
   foro = new Foro();
   commentarios: Comment[] = [];
   insertComment = false;
+  loading = true;
 
   constructor(private activatedRoute: ActivatedRoute,
       private foroService: ForoService,
@@ -23,7 +24,10 @@ export class CommentsComponent {
 
     activatedRoute.params.subscribe( params => {
       this.foroService.getForo(params["id"]).subscribe(f=> this.foro = f);
-      this.commentService.getComments(params["id"]).subscribe( c => this.commentarios = c);
+      this.commentService.getComments(params["id"]).subscribe( c => {
+        this.commentarios = c;
+        this.loading = false;
+      });
     });
   }
 

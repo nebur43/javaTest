@@ -86,7 +86,6 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
     	        .keyEqualTo(key);
     	
     	mappedTable.query(queryConditional).forEach( x -> comments.addAll(x.items()));
-    	comments.forEach(f -> f.setUsuario("@"+f.getUsuario()));
     	return comments;
     }
 }

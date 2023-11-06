@@ -14,6 +14,7 @@ export class NewCommentComponent {
   error= "";
   comentario="";
   usuario="";
+  loading=false;
 
   constructor(private commentService: CommentService, private router: Router) {
     const u = localStorage.getItem('usuario');
@@ -31,6 +32,7 @@ export class NewCommentComponent {
       this.error = "Nombre vacío o muy corto";
       return;
     }
+    this.loading = true;
     localStorage.setItem('usuario', this.usuario);
     const comment = new Comment();
     comment.comentario = this.comentario;

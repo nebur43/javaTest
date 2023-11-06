@@ -89,7 +89,6 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
     	Long idForo = Long.valueOf(id);
     	Key key = Key.builder().partitionValue(1).sortValue(idForo).build();
     	Foro foro = mappedTable.getItem(key);
-    	foro.setUsuario("@"+foro.getUsuario());
     	return foro;
 	}
 
@@ -99,7 +98,6 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
     	DynamoDbTable<Foro> mappedTable = enhancedClient
                 .table("Foro", TableSchema.fromBean(Foro.class));
     	mappedTable.scan().forEach( x -> foros.addAll(x.items()));
-    	foros.forEach(f -> f.setUsuario("@"+f.getUsuario()));
     	return foros;
     }
 }

@@ -11,6 +11,7 @@ import { NewThreadComponent } from './components/new-thread/new-thread.component
 import { FormsModule } from '@angular/forms';
 import { CommentComponent } from './components/comment/comment.component';
 import { NewCommentComponent } from './components/new-comment/new-comment.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NewCommentComponent } from './components/new-comment/new-comment.compon
     ThreadComponent,
     NewThreadComponent,
     CommentComponent,
-    NewCommentComponent
+    NewCommentComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ export class NewThreadComponent {
   titulo = "";
   usuario = "";
   error = "";
+  loading=false;
 
   constructor(private foroService: ForoService, private router: Router) {
     const u = localStorage.getItem('usuario');
@@ -32,6 +33,7 @@ export class NewThreadComponent {
       this.error = "Nombre vacío o muy corto";
       return;
     }
+    this.loading=true;
     localStorage.setItem('usuario', this.usuario);
     const foro = new Foro();
     foro.asunto = this.titulo;

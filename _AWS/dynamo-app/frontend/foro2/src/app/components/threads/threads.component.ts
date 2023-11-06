@@ -12,6 +12,7 @@ export class ThreadsComponent {
   foros: Foro[] = [];
 
   insertForo = false;
+  loading = true;
 
   constructor(private foroService: ForoService) {
 
@@ -20,6 +21,7 @@ export class ThreadsComponent {
    ngOnInit(): void {
     this.foroService.getForos().subscribe( c => {
       this.foros = c;
+      this.loading = false;
     });
    }
 
