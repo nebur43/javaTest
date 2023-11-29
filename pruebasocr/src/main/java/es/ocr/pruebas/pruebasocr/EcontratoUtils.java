@@ -84,7 +84,7 @@ public class EcontratoUtils {
 		FileInputStream fis = new FileInputStream(file);
 		try {
 			if (fis.read(array)<=0) {
-				throw new IOException("Archivo vac�o: "+path) ;
+//				throw new IOException("Archivo vac�o: "+path) ;
 			}
 		} finally {
 			fis.close();
