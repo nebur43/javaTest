@@ -27,15 +27,15 @@ public class ClienteRest {
 		RestTemplate restTemplate = new RestTemplate();
 //		restTemplate.exchange("http://localhost:8080/holamundo-servicio-rest/getTrabajadores", HttpMethod.GET,Persona.class);
 		String s = restTemplate.getForObject("http://localhost:8080/holamundo-servicio-rest/getTrabajadores", String.class);
-		System.out.println("Devolución 01:" + s);
+		System.out.println("Devolucion 01:" + s);
 		
 		s = restTemplate.getForObject("http://localhost:8080/holamundo-servicio-rest/getTrabajadores", String.class,"nombre","superman");
-		System.out.println("Devolución 02:" + s);
+		System.out.println("Devolucion 02:" + s);
 		
 		 Map<String, String> params = new HashMap<String, String>();
 		 params.put("name", "superman");
 		 s = restTemplate.getForObject("http://localhost:8080/holamundo-servicio-rest/getTrabajadores?nombre={name}", String.class,params);
-		 System.out.println("Devolución 03:" + s);
+		 System.out.println("Devolucion 03:" + s);
 		 
 		 
 		 
@@ -53,7 +53,7 @@ public class ClienteRest {
 		 
 		 
 //		 s = restTemplate.getForObject("http://localhost:8080/holamundo-servicio-rest/getKK", String.class,params);
-//		 System.out.println("Devolución 04:" + s);
+//		 System.out.println("Devoluciï¿½n 04:" + s);
 		 
 				
 		// ******** exchange **********		
@@ -72,7 +72,7 @@ public class ClienteRest {
 		        HttpMethod.GET, 
 		        entity, 
 		        String.class);
-		System.out.println("Devolución 30:" + response.getBody());
+		System.out.println("Devolucion 30:" + response.getBody());
 		
 		
 		////// POSTS 
@@ -86,7 +86,7 @@ public class ClienteRest {
 		
 		
 		
-		System.out.println("Devolución 40:" + responseHolaMundo.getCode() + " - " + responseHolaMundo.getMessage());
+		System.out.println("Devolucion 40:" + responseHolaMundo.getCode() + " - " + responseHolaMundo.getMessage());
 		
 	}
 

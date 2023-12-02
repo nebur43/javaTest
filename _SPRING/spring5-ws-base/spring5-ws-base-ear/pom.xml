@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>es.prueba.ruben</groupId>
-    <artifactId>HelloWorld-Web</artifactId>
+    <artifactId>spring5-ws-base</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>HelloWorldApp-ear</artifactId>
+  <artifactId>spring5-ear</artifactId>
   <packaging>ear</packaging>
   <properties>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -18,7 +18,7 @@
   <dependencies>
 	<dependency>
       <groupId>es.prueba.ruben</groupId>
-	  <artifactId>HelloWorldApp-war</artifactId>
+	  <artifactId>spring5-war</artifactId>
       <version>${project.version}</version>
       <type>war</type>
     </dependency>
@@ -30,21 +30,26 @@
     </dependency>
   </dependencies>
  <build>
- 	<finalName>helloWorld-ear</finalName>
+ 	<finalName>spring5-ear</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
         <configuration>
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-ear-plugin</artifactId>
-        <version>2.10.1</version>
         <configuration>
           <generateApplicationXml>true</generateApplicationXml>
           <applicationXml>${project.build.directory}/application.xml</applicationXml>
+          <modules>
+            <webModule>
+              <groupId>es.prueba.ruben</groupId>
+              <artifactId>spring5-war</artifactId>
+              <contextRoot>/spring5base</contextRoot>
+            </webModule>
+          </modules>
         </configuration>
       </plugin>
     </plugins>
