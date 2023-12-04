@@ -30,7 +30,7 @@ public class HolaController {
 	}
 	
 	@GetMapping(value = "/usuario", produces = MediaType.APPLICATION_JSON_VALUE)
-	@CrossOrigin(origins = {"*"}, maxAge = 86400, allowCredentials = "false")
+//	@CrossOrigin(origins = {"*"}, maxAge = 86400, allowCredentials = "false")
 	public Usuario getUsuario() {
 		LOGGER.debug("LLamando a WS mostar usuario {}", usuario);
 		return usuario;

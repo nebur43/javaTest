@@ -4,10 +4,10 @@
 
 <h3>LLamadas a WS</h3>
 <p>
-Ejecutando war: <a href="http://localhost:8080/spring5-war/api/hola">http://localhost:8080/spring5-war/api/hola</a>
+Ejecutando war: <a href="/spring5-war/api/hola">/spring5-war/api/hola</a>
 </p>
 <p>
-Ejecutando ear: <a href="http://localhost:8080/spring5base/api/hola">http://localhost:8080/spring5base/api/hola</a>
+Ejecutando ear: <a href="/spring5base/api/hola">/spring5base/api/hola</a>
 </p>
 
 <p>

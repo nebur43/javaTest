@@ -23,27 +23,10 @@
 
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-core</artifactId>
-        <version>${jackson.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-annotations</artifactId>
-        <version>${jackson.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
         <version>${jackson.version}</version>
       </dependency>
 
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
@@ -54,16 +37,6 @@
 	    <artifactId>spring-core</artifactId>
 	    <version>${spring.version}</version>
 	</dependency>
-	<dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-beans</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
   
   
     <dependency>
@@ -93,7 +66,7 @@
     </dependency>    
     
     
-    <!-- si no hay jsps, esto sobra -->
+    <!-- si no hay jsps, esto sobra 
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
@@ -104,13 +77,15 @@
       <artifactId>jsp-api</artifactId>
       <version>2.1</version>
     </dependency>
-    
-    
+
+    -->
+   
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>3.1.0</version>
     </dependency>  
+ 
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
