@@ -22,24 +22,20 @@
       <version>${project.version}</version>
       <type>war</type>
     </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
  <build>
  	<finalName>spring5-ear</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
         <configuration>
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-ear-plugin</artifactId>
+        <version>3.3.0</version>
         <configuration>
           <generateApplicationXml>true</generateApplicationXml>
           <applicationXml>${project.build.directory}/application.xml</applicationXml>
