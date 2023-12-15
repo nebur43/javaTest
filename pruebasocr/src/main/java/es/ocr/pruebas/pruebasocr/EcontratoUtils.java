@@ -35,6 +35,11 @@ public class EcontratoUtils {
 		return Base64Utils.decodeFromString(base64Image);
 	}
 	
+	
+	public static void writeImageFile(BufferedImage image, File file) throws IOException {
+		ImageIO.write(image, "jpg", file);
+	}
+	
 	public static void writeImageFile(byte[] bytes, File file) throws IOException {
 		 OutputStream os = new FileOutputStream(file); 
 
